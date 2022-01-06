@@ -4,9 +4,11 @@
   "description": "Music library project This is the final backend project of the Machester Codes course",
   "main": "index.js",
   "scripts": {
-  "prestart": "node utils/create-database.js",
+    "prestart": "node utils/create-database.js",
     "start": "nodemon -r dotenv/config index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "node utils/create-database.js test",
+    "test": "mocha tests/**/*.js --exit --recursive --timeout 60000 --file ./tests/test-setup.js",
+    "postest": "node utils/drop-database.js"
   },
   "repository": {
     "type": "git",
@@ -24,12 +26,15 @@
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0"
+    "eslint-plugin-promise": "^5.2.0",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "mocha": "^9.1.3",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
-    "dotenv": "^10.0.0",
     "express": "^4.17.2",
-    "mysql2": "^2.3.3",
-    "nodemon": "^2.0.15"
+    "mysql2": "^2.3.3"
   }
 }
