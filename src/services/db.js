@@ -1,3 +1,4 @@
+//src/services/db.js
 const mysql = require("mysql2/promise");
 
 const { DB_PASSWORD, DB_USER, DB_NAME, DB_HOST, DB_PORT } = process.env;
