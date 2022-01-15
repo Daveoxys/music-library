@@ -17,7 +17,7 @@ describe("create artist", () => {
       it("creates a new artist in the database", async () => {
         const res = await request(app).post("/artist").send({
           name: "Led Zeppelin",
-          genre: "rock",
+          genre: "Rock",
         });
 
         expect(res.status).to.equal(201);
@@ -27,7 +27,7 @@ describe("create artist", () => {
         );
 
         expect(artistEntries.name).to.equal("Led Zeppelin");
-        expect(artistEntries.genre).to.equal("rock");
+        expect(artistEntries.genre).to.equal("Rock");
       });
     });
   });

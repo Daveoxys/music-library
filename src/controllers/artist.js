@@ -22,7 +22,7 @@ exports.createArtist = async (req, res) => {
   db.close();
 };
 
-exports.readArtist = async (req, res) => {
+exports.readArtist = async (_, res) => {
   const db = await getDb();
 
   try {
@@ -30,6 +30,28 @@ exports.readArtist = async (req, res) => {
     res.status(200).json(artists);
   } catch (err) {
     res.status(500).json(err);
+  }
+
+  db.close();
+};
+
+exports.singleArtist = async (req, res) => {
+  const db = await getDb();
+  const { artistId } = req.params;
+  const [[artistLength]] = await db.query(
+    "SELECT * FROM music_library_dev.Artist"
+  );
+  const [[artists]] = await db.query("SELECT * FROM Artist WHERE id = ?", [
+    artistId,
+  ]);
+
+  if (!artists) {
+    res.status(404);
+    res.send(
+      `Sorry, artist with an ID of ${artistId} doesn't exist. Please try again using an ID between 2 and ${artistLength.length}.`
+    );
+  } else {
+    res.status(200).json(artists);
   }
 
   db.close();
