@@ -19,7 +19,7 @@ This project tackles database design, SQL, MySQL and CRUD Operations
 - express
 - mysql2
 
-### Programming languages and technologies used ###
+### Programming languages and technologies used 
 
 - Express, NodeJS
 - MySQL
@@ -39,4 +39,8 @@ This project tackles database design, SQL, MySQL and CRUD Operations
 ```
 npm start
 ```
+
+## Authors
+
+- David Taylor (https://github.com/Daveoxys) via Manchester Codes.
 
